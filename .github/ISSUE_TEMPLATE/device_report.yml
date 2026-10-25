@@ -1,0 +1,41 @@
+name: Device report
+description: Tell us what sidecar does on your TV
+labels: [compatibility]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Device reports are the most useful contribution. **Never include serial numbers,
+        MAC addresses, device IDs, advertising IDs or your public IP.**
+  - type: input
+    id: model
+    attributes:
+      label: TV model
+      placeholder: "e.g. 55U7xx"
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: Software version
+      description: From the TV's system information screen (the long version string).
+    validations:
+      required: true
+  - type: dropdown
+    id: loads
+    attributes:
+      label: Did the bridge page load on the TV through the vendor domain?
+      options: ["Yes", "No", "Loaded only through the IP address", "Not sure"]
+    validations:
+      required: true
+  - type: input
+    id: functions
+    attributes:
+      label: Number of functions the probe found
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Errors, certificate warnings, anything odd. Redact personal values first.

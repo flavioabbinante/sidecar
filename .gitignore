@@ -1,0 +1,6 @@
+__pycache__/
+*.egg-info/
+# reports and logs describe your own device and network
+reports/
+certs/
+*.log

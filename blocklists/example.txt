@@ -1,0 +1,4 @@
+# One name per line; subdomains are blocked too. Hosts-file lines also work.
+# Build your own from the output of `sidecar summarize`; nothing here is guaranteed
+# to be safe to block on every firmware, so test one name at a time.
+acr.unruly.co

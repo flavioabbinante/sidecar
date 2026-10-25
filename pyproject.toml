@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sidecar-tv"
+version = "0.1.0"
+description = "Inspect and quiet a VIDAA smart TV from your own LAN"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+sidecar = "sidecar.cli:main"
+
+[tool.setuptools]
+packages = ["sidecar"]
+
+[tool.setuptools.package-data]
+sidecar = ["static/*.html"]

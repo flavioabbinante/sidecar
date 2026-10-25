@@ -1,0 +1,44 @@
+name: Bug report
+description: Something in sidecar doesn't work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. **Don't paste serial numbers, MAC addresses, device IDs,
+        advertising IDs or your public IP.** Security problems go through the Security tab, not here.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands you ran and what you did on the TV.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: sidecar version
+      description: Output of `python3 -m sidecar --version`
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python and OS
+      placeholder: Python 3.12, Fedora 42
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Terminal output or log lines. Remove anything personal first.
+      render: text

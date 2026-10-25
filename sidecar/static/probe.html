@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sidecar probe</title>
+<style>body{font:22px sans-serif;background:#111;color:#eee;margin:2em}pre{white-space:pre-wrap}</style>
+</head>
+<body>
+<h1>sidecar probe</h1>
+<p>Read-only scan. Only functions named <code>Hisense_Get*</code> are ever called.</p>
+<pre id="log"></pre>
+<script>
+var PREFIXES = ['Hisense_', 'TvInfo_', 'VOS_', 'HiUtils', 'omi_platform'];
+var GETTER = /^Hisense_Get[A-Z]\w*$/;
+var out = document.getElementById('log');
+function say(msg) { out.textContent += msg + '\n'; }
+
+// Calls a getter with no arguments; if the platform insists on a callback, retries with one.
+function callGetter(fn) {
+  return new Promise(function (resolve) {
+    var timer = setTimeout(function () { resolve({ error: 'timeout' }); }, 3000);
+    function done(o) { clearTimeout(timer); resolve(o); }
+    try {
+      done({ value: fn() });
+    } catch (e) {
+      if (!/callback/i.test(String(e))) return done({ error: String(e) });
+      try { fn(function (v) { done({ value: v }); }); }
+      catch (e2) { done({ error: String(e2) }); }
+    }
+  });
+}
+
+(async function () {
+  var names = Object.getOwnPropertyNames(window).filter(function (n) {
+    return typeof window[n] === 'function' && PREFIXES.some(function (p) { return n.indexOf(p) === 0; });
+  }).sort();
+  say('Found ' + names.length + ' platform functions.');
+
+  var getters = {};
+  for (var n of names.filter(function (n) { return GETTER.test(n); })) {
+    getters[n] = await callGetter(window[n]);
+  }
+  say('Called ' + Object.keys(getters).length + ' getters.');
+
+  var res = await fetch('/api/report', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ origin: location.origin, userAgent: navigator.userAgent, functions: names, getters: getters })
+  });
+  say(res.ok ? 'Report sent. You can close this page.' : 'Upload failed: HTTP ' + res.status);
+})().catch(function (e) { say('Error: ' + e); });
+</script>
+</body>
+</html>
