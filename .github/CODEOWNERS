@@ -1,0 +1,7 @@
+# Changes to these paths need the owner's review (see the "Protect main" ruleset).
+*                       @flavioabbinante
+/.github/               @flavioabbinante
+/SECURITY.md            @flavioabbinante
+/GOVERNANCE.md          @flavioabbinante
+/sidecar/web.py         @flavioabbinante
+/sidecar/static/        @flavioabbinante
