@@ -15,12 +15,11 @@
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
     <rect x="110" y="78" width="230" height="140" rx="16" stroke="#38bdf8" stroke-width="9"/>
     <path d="M190 246h70M225 218v28" stroke="#38bdf8" stroke-width="9"/>
-    <path d="M340 168h38" stroke="url(#accent)" stroke-width="9"/>
+    <path d="M340 168h38" stroke="#7dd3fc" stroke-width="9"/>
     <rect x="378" y="132" width="86" height="72" rx="36" stroke="#a78bfa" stroke-width="9"/>
-    <path d="M150 112l34 0M150 112v28" stroke="#38bdf8" stroke-width="6" opacity=".55"/>
   </g>
   <circle cx="421" cy="168" r="9" fill="#a78bfa"/>
   <text x="520" y="168" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="104" font-weight="700" fill="#e2e8f0" letter-spacing="-2">sidecar</text>
   <rect x="524" y="188" width="150" height="6" rx="3" fill="url(#accent)"/>
-  <text x="522" y="240" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="29" fill="#94a3b8">Inspect and quiet your VIDAA TV from your own network.</text>
+  <text x="522" y="240" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="30" fill="#94a3b8">Inspect and quiet your VIDAA TV.</text>
 </svg>

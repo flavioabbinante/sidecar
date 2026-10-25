@@ -3,6 +3,7 @@
 It answers one name with your machine's IP, sinks names on a blocklist and
 forwards everything else to a real resolver. Every decision is logged.
 """
+
 import socket
 import struct
 import time
@@ -41,9 +42,9 @@ def parse_question(pkt):
             n = pkt[i]
             if n & 0xC0:
                 raise ValueError("compressed name in question")
-            labels.append(pkt[i + 1:i + 1 + n].decode("ascii"))
+            labels.append(pkt[i + 1 : i + 1 + n].decode("ascii"))
             i += n + 1
-        (qtype,) = struct.unpack(">H", pkt[i + 1:i + 3])
+        (qtype,) = struct.unpack(">H", pkt[i + 1 : i + 3])
     except (IndexError, struct.error, UnicodeDecodeError) as e:
         raise ValueError("malformed question") from e
     if i + 5 > len(pkt):

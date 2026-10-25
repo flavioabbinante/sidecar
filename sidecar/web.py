@@ -1,4 +1,5 @@
 """HTTPS side of sidecar: serves the probe page and stores what the TV reports."""
+
 import json
 import re
 import ssl
@@ -6,7 +7,6 @@ import subprocess
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib import resources
-from pathlib import Path
 
 MAX_BODY = 1_000_000
 SENSITIVE = re.compile(r"serial|uuid|deviceid|adsid|ipaddress|mac|email|token|account|password", re.I)
@@ -27,10 +27,26 @@ def ensure_cert(directory, domain):
     crt, key = directory / "cert.pem", directory / "key.pem"
     if not (crt.exists() and key.exists()):
         subprocess.run(
-            ["openssl", "req", "-x509", "-newkey", "rsa:2048", "-nodes", "-days", "365",
-             "-keyout", str(key), "-out", str(crt), "-subj", f"/CN={domain}",
-             "-addext", f"subjectAltName=DNS:{domain}"],
-            check=True, capture_output=True,
+            [
+                "openssl",
+                "req",
+                "-x509",
+                "-newkey",
+                "rsa:2048",
+                "-nodes",
+                "-days",
+                "365",
+                "-keyout",
+                str(key),
+                "-out",
+                str(crt),
+                "-subj",
+                f"/CN={domain}",
+                "-addext",
+                f"subjectAltName=DNS:{domain}",
+            ],
+            check=True,
+            capture_output=True,
         )
         key.chmod(0o600)
     return crt, key

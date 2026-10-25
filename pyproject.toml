@@ -19,3 +19,15 @@ packages = ["sidecar"]
 
 [tool.setuptools.package-data]
 sidecar = ["static/*.html"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S"]
+ignore = ["S104"]  # binding 0.0.0.0 is the point: the TV reaches us over the LAN
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+"sidecar/web.py" = ["S603", "S607"]  # fixed openssl command, no user input in argv

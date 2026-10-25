@@ -54,7 +54,8 @@ class DnsTests(unittest.TestCase):
 
 class WebTests(unittest.TestCase):
     def test_redact_nested(self):
-        data = {"getters": {"Hisense_GetSerialType": 1, "Hisense_GetUuid": "abc", "Hisense_GetBrand": "x"}, "list": [{"mac": "1"}]}
+        getters = {"Hisense_GetSerialType": 1, "Hisense_GetUuid": "abc", "Hisense_GetBrand": "x"}
+        data = {"getters": getters, "list": [{"mac": "1"}]}
         out = web.redact(data)
         self.assertEqual(out["getters"]["Hisense_GetUuid"], "<redacted>")
         self.assertEqual(out["getters"]["Hisense_GetBrand"], "x")
