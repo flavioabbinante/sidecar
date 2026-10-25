@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Question or idea
+    url: https://github.com/flavioabbinante/sidecar/discussions
+    about: Ask questions and share how you use sidecar.
   - name: Security problem
     url: https://github.com/flavioabbinante/sidecar/security/advisories/new
     about: Report vulnerabilities privately, not in a public issue.

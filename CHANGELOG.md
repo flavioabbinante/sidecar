@@ -6,6 +6,15 @@ All notable changes are listed here. The format follows
 
 ## [Unreleased]
 
+### Added
+- CI: lint and format check, package build and wheel smoke test, secret scan, CodeQL,
+  OpenSSF Scorecard, and a tag-driven release workflow with build provenance
+- Governance, support and issue forms for feature requests and blocklist entries
+
+### Fixed
+- The README banner no longer cuts off its tagline
+- Removed an unused import
+
 ## [0.1.0]
 
 ### Added

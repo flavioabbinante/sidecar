@@ -1,0 +1,40 @@
+name: Blocklist entry
+description: Suggest a tracking or advertising name to add to a blocklist
+labels: [blocklist]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Only names that are tracking or advertising, and that the TV does **not** need to work.
+        No personal or household-specific names, and no serial numbers, MAC addresses or device IDs.
+  - type: input
+    id: name
+    attributes:
+      label: Domain name
+      placeholder: tracker.example
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is it?
+      description: Who runs it and what does the TV send there? How do you know?
+    validations:
+      required: true
+  - type: input
+    id: tv
+    attributes:
+      label: TV model and software version
+    validations:
+      required: true
+  - type: dropdown
+    id: works
+    attributes:
+      label: With this name blocked, does the TV still work normally?
+      options: ["Yes, tested for a while", "Yes, tested briefly", "Not tested"]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything that stopped working

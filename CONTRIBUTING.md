@@ -22,7 +22,14 @@ cd sidecar
 python3 -m unittest discover -s tests
 ```
 
-There is nothing to install. Python 3.9+ is enough.
+There is nothing to install to run sidecar. Python 3.9+ is enough.
+
+CI also runs the linter. To get the same checks locally (needs [uv](https://docs.astral.sh/uv/)):
+
+```sh
+uvx ruff@0.8.6 check .
+uvx ruff@0.8.6 format --check .   # drop --check to fix formatting
+```
 
 ## Ground rules
 

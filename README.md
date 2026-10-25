@@ -5,6 +5,8 @@
 <br>
 
 [![CI](https://github.com/flavioabbinante/sidecar/actions/workflows/ci.yml/badge.svg)](https://github.com/flavioabbinante/sidecar/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/flavioabbinante/sidecar/actions/workflows/codeql.yml/badge.svg)](https://github.com/flavioabbinante/sidecar/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/flavioabbinante/sidecar/badge)](https://scorecard.dev/viewer/?uri=github.com/flavioabbinante/sidecar)
 [![Python](https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22c55e)](LICENSE)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-22c55e)](pyproject.toml)
@@ -45,15 +47,6 @@ background service. Run it when you need it, stop it when you're done.
 > [!IMPORTANT]
 > Use sidecar only on a TV you own, on a network you control. It is not affiliated with
 > or endorsed by Hisense or VIDAA, and a firmware update may stop it from working.
-
-## 🧰 Built with
-
-<p>
-  <img src="https://skillicons.dev/icons?i=py,html,js,linux,git,github,githubactions&theme=dark" alt="Python, HTML, JavaScript, Linux, Git, GitHub, GitHub Actions">
-</p>
-
-Python for the servers, plain HTML and JavaScript for the probe page, OpenSSL for the
-one-time certificate, GitHub Actions for tests.
 
 ## 🚀 Quick start
 
@@ -239,13 +232,26 @@ Have an idea? [Open an issue](../../issues/new/choose).
 
 ## 🤝 Contributing
 
-Contributions are welcome, and **device reports are the most useful thing you can send**:
-which model and firmware you have, and whether the probe worked. See
-[CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
+sidecar is built in the open and anyone can help. **Device reports are the most useful
+thing you can send**: which model and software version you have, and whether the probe
+worked. Looking for a way in? Start with the issues labelled
+[`good first issue`](https://github.com/flavioabbinante/sidecar/labels/good%20first%20issue)
+or [`help wanted`](https://github.com/flavioabbinante/sidecar/labels/help%20wanted).
+
+| | |
+|---|---|
+| 💬 Ask or share | [Discussions](https://github.com/flavioabbinante/sidecar/discussions) |
+| 🐛 Report | [Issues](https://github.com/flavioabbinante/sidecar/issues/new/choose) |
+| 📖 Learn the rules | [CONTRIBUTING.md](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Governance](GOVERNANCE.md) |
+| 🆘 Get help | [SUPPORT.md](SUPPORT.md) |
 
 ```sh
-python3 -m unittest discover -s tests
+python3 -m unittest discover -s tests   # tests
+uvx ruff@0.8.6 check . && uvx ruff@0.8.6 format --check .   # lint, same as CI
 ```
+
+Every pull request runs lint, tests on Python 3.9 to 3.13, a package build and install
+check, a secret scan and CodeQL. Releases are built by CI with signed provenance.
 
 ## 🙏 Prior art
 
